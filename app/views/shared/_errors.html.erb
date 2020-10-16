@@ -4,12 +4,12 @@
       <div class="card text-danger p-2 bgRed">
         <div class="card-heading">
           <h2 class="card-title lead font-weight-bold">
-            <%= pluralize(@recipe.errors.count, "error") %>
-            prohibited this <%= @recipe.class %> from being saved:
+            <%= pluralize(obj.errors.count, "error") %>
+            prohibited this <%= obj.class %> from being saved:
           </h2>
           <div class="card-body">
             <ul>
-              <% @recipe.errors.full_messages.each do |msg| %>
+              <% obj.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>
             </ul>
