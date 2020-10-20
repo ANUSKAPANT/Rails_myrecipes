@@ -18,10 +18,10 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "All recipes", recipes_path, class: "dropdown-item"%>
-          <%= link_to "Create a new recipe", new_recipe_path, class: "dropdown-item"%>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <% if logged_in? %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Create a new recipe", new_recipe_path, class: "dropdown-item"%>
+          <% end %>
         </div>
       </li> 
       <li class="nav-item dropdown">
@@ -30,10 +30,12 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "All Ingredients", ingredients_path, class: "dropdown-item"%>
+          <div class="dropdown-divider"></div>
           <% Ingredient.all.each do |ingredient| %>
             <%= link_to ingredient.name.capitalize, ingredient_path(ingredient), class: "dropdown-item" %>
           <% end %>
           <% if logged_in? && current_chef.admin? %>
+            <div class="dropdown-divider"></div>
             <%= link_to "New Ingredient", new_ingredient_path, class: "dropdown-item" %>
           <% end %>
         </div>
