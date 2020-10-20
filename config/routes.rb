@@ -10,5 +10,13 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+
+  resources :ingredients, except: [:destroy]
+
+  resources :recipes do
+    resources :comments, only: [:create]
+  end
+
+  mount ActionCable.server => '/cable'
     
 end

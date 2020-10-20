@@ -6,9 +6,7 @@ class ChefsIndexTest < ActionDispatch::IntegrationTest
                         password: "password", password_confirmation: "password")
         @chef2 = Chef.create!(chefname: "john", email: "john@example.com",
                         password: "password", password_confirmation: "password")
-        @admin_user = Chef.create!(chefname: "john1", email: "john1@example.com",
-                    password: "password", 
-                    password_confirmation: "password", admin: true)
+        @admin_user = Chef.create!(chefname: "jack", email: "jack@example.com", paswword: "admin", password_confirmation: "admin", admin: true)
     end
       
     test "should delete chef" do
