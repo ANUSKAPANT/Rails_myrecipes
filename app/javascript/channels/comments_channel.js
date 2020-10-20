@@ -10,7 +10,8 @@ consumer.subscriptions.create("CommentsChannel", {
   },
 
   received(data) {
-    console.log(data);
-    document.getElementById("messages").innerHTML += data
+    $("#comments .comment-fix:first").prepend(data)
   }
 });
+
+

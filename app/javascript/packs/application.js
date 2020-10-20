@@ -16,3 +16,14 @@ import "bootstrap"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+function scrollToBottom(){
+  if($('#messages').length > 0) {
+    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+  }
+}
+
+$( document ).on('turbolinks:load', function() {
+  scrollToBottom();
+});
+

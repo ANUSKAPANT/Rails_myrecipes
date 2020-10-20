@@ -1,9 +1,11 @@
 <div class="center">
   <%= will_paginate comments %>
 </div>
+<div class="comment-fix my-2">
 <% comments.each do |comment| %>
   <%= render(partial: 'comments/comment', object: comment) %>
 <% end %>
+</div>
 <div class="center my-4">
   <%= will_paginate comments %>
 </div>
