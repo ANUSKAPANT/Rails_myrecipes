@@ -1,6 +1,9 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
 <div class="card col-md-8 mx-auto bg-light">
+  <div align="center">
+    <%= image_tag @recipe.image.url if @recipe.image? %>
+  </div>
   <h4 class="text-center description"><strong>Steps: </strong></h4>
   <hr />
   <%= simple_format(@recipe.description) %>
@@ -27,6 +30,18 @@
       <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-xs btn-danger" %>
     <% end %>
     <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-xs btn-primary" %>
+  </div>
+  <div class="row">
+    <div class="ml-auto liking d-flex">
+       <%= button_to like_recipe_path(@recipe, like: true), class: "mr-2", method: :post do  %>
+        <i class="fas fa-thumbs-up"></i>
+        <%= @recipe.thumbs_up_total %>
+      <%end%>
+      <%= button_to like_recipe_path(@recipe, like: false), method: :post do  %>
+        <i class="fas fa-thumbs-down"></i>
+        <%= @recipe.thumbs_down_total %>
+      <%end%>
+    </div>
   </div>
 </div>
 

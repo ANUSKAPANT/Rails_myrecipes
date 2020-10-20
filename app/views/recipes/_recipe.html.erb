@@ -18,6 +18,9 @@
                     <%= pluralize(recipe.comments.count, 'Comment') %>
               </small></span>
       </p> 
+      <div class="col-md-2 my-2">
+      <%= image_tag(recipe.image.url, size: "150x100") if recipe.image? %>
+    </div>
       <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
         <div class="recipe-actions">
           <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: "btn btn-xs btn-warning" %>
@@ -26,6 +29,18 @@
               class: "btn btn-xs btn-danger" %>
         </div>
       <% end %>
+      <div class="row">
+        <div class="ml-auto liking d-flex">
+          <%= button_to like_recipe_path(recipe, like: true), class: "", method: :post do  %>
+            <i class="fas fa-thumbs-up"></i>
+            <%= recipe.thumbs_up_total %>
+          <%end%>
+          <%= button_to like_recipe_path(recipe, like: false), method: :post do  %>
+            <i class="fas fa-thumbs-down"></i>
+            <%= recipe.thumbs_down_total %>
+          <%end%>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

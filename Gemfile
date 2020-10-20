@@ -23,6 +23,11 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate','3.1.7'
 gem 'will_paginate-bootstrap4'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
+
 
 
 
